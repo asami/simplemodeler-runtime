@@ -5,7 +5,7 @@ import java.math.*;
 
 /*
  * @since   Feb. 10, 2012
- * @version Nov.  1, 2012
+ * @version Nov.  8, 2012
  * @author  ASAMI, Tomoharu
  */
 public final class USimpleModeler {
@@ -361,7 +361,8 @@ public final class USimpleModeler {
     private static String _to_string(Object value) {
         return value.toString();
     }
-    
+
+    // XML
     public static void toXml(StringBuilder buf, String name, Object value) {
         if (value == null) return;
         buf.append("<"); 
@@ -402,6 +403,7 @@ public final class USimpleModeler {
         }
     } 
 
+    // Json
     public static void toJson(StringBuilder buf, String name, Object value) {
         if (value == null) return;
         buf.append(name); 
@@ -445,7 +447,98 @@ public final class USimpleModeler {
         }
         buf.append("]");
     } 
+
+    // Csv
+    public static void toCsv(StringBuilder buf, String name, Object value) {
+        if (value == null) return;
+        buf.append(name); 
+        buf.append(":"); 
+        buf.append("\""); 
+        toString(buf, value); 
+        buf.append("\""); 
+    } 
     
+    public static void toCsv(StringBuilder buf, String name, String value) {
+        if (value == null) return;
+        buf.append(name); 
+        buf.append(":"); 
+        buf.append("\""); 
+        toString(buf, value); 
+        buf.append("\""); 
+    } 
+    
+    public static void toCsv(StringBuilder buf, String name, Date value) {
+        if (value == null) return;
+        buf.append(name); 
+        buf.append(":");
+        buf.append("\"");
+        toString(buf, value); 
+        buf.append("\""); 
+    } 
+        
+    public static void toCsv(StringBuilder buf, String name, List<String> values) {
+        if (values == null) return;
+        buf.append(name);
+        buf.append(": [");
+        boolean first = true;
+        for (String v: values) {
+            if (!first) {
+                first = false;
+                buf.append(", ");
+            }
+            buf.append("\"");
+            toString(buf, v);
+            buf.append("\"");
+        }
+        buf.append("]");
+    } 
+
+    // Yaml
+    public static void toYaml(StringBuilder buf, String name, Object value) {
+        if (value == null) return;
+        buf.append(name); 
+        buf.append(":"); 
+        buf.append("\""); 
+        toString(buf, value); 
+        buf.append("\""); 
+    } 
+    
+    public static void toYaml(StringBuilder buf, String name, String value) {
+        if (value == null) return;
+        buf.append(name); 
+        buf.append(":"); 
+        buf.append("\""); 
+        toString(buf, value); 
+        buf.append("\""); 
+    } 
+    
+    public static void toYaml(StringBuilder buf, String name, Date value) {
+        if (value == null) return;
+        buf.append(name); 
+        buf.append(":");
+        buf.append("\"");
+        toString(buf, value); 
+        buf.append("\""); 
+    } 
+        
+    public static void toYaml(StringBuilder buf, String name, List<String> values) {
+        if (values == null) return;
+        buf.append(name);
+        buf.append(": [");
+        boolean first = true;
+        for (String v: values) {
+            if (!first) {
+                first = false;
+                buf.append(", ");
+            }
+            buf.append("\"");
+            toString(buf, v);
+            buf.append("\"");
+        }
+        buf.append("]");
+    } 
+
+    // Map
     public static void toMap(Map<String, Object> map, String name, Object value) {
         if (value == null) return;
         map.put(name, value);
