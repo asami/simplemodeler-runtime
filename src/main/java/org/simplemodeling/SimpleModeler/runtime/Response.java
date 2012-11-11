@@ -132,6 +132,9 @@ public class Response<T> {
         } else if (e instanceof NoSuchElementException) {
             return new Response(
                 CODE_NOT_FOUND, null, null, null, e);
+        } else if (e instanceof java.security.AccessControlException) {
+            return new Response(
+                CODE_UNAUTHORIZED, null, null, null, e);
         } else {
             return new Response(
                 CODE_INTERNAL_SERVER_ERROR, null, null, null, e);
