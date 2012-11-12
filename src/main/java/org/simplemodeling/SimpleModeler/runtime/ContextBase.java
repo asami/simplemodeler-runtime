@@ -12,10 +12,10 @@ public abstract class ContextBase {
     /*
      * Security
      */
-    public void authorize(ISecurityContext security) throws AccessControlException {
+    public void authorize(String resource, ISecurityContext security) throws AccessControlException {
     }
 
-    public void authorizeAll() throws AccessControlException {
+    public void authorizeAll(String resource) throws AccessControlException {
     }
 
     /*

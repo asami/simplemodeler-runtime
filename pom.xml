@@ -5,7 +5,7 @@
     <artifactId>simplemodeler-runtime</artifactId>
     <packaging>jar</packaging>
     <description>SimpleModeler Java Runtime</description>
-    <version>0.1.2-SNAPSHOT</version>
+    <version>0.1.2</version>
     <name>simplemodler-runtime</name>
     <organization>
         <name>org.simplemodeling</name>
